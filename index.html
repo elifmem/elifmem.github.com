@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Font Experiment</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="main.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <style>
+            #container { width: 640px; }
+            .visibility { display: none; }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <form>
+                <input type="search">
+                <input id="search" type="submit" value="Search">
+            </form>
+        
+            <ul id="list">
+            </ul>
+        </div>
+        
+        <script>
+            //$.fn.loadDelay = function() {
+            //    setTimeout(function() { listResults(); }, 2000);
+            //};
+            
+            var listItem = '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>';
+            
+            $.fn.listResults = function() {
+                //this.append( $('<li>Actor</li>') );
+                this.append(listItem);
+                return this;
+            };
+            
+            $('form').submit(function(e) {
+                event.preventDefault(e);
+                setTimeout(function(){
+                    $("#list").listResults();
+                }, 3000);
+            });
+            
+        
+        </script>
+    </body>
+</html>
