@@ -25,26 +25,23 @@
         </div>
         
         <script>
-            //$.fn.loadDelay = function() {
-            //    setTimeout(function() { listResults(); }, 2000);
-            //};
-            
             var listItem = '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>';
             
-            $.fn.listResults = function() {
+            function listResults() {
+                var $list = $("#list");
                 //this.append( $('<li>Actor</li>') );
-                this.append(listItem);
+                $list.append(listItem);
                 return this;
             };
+
+            function loadDelay() {
+              setTimeout(listResults, 2000);
+            };            
             
             $('form').submit(function(e) {
                 event.preventDefault(e);
-                setTimeout(function(){
-                    $("#list").listResults();
-                }, 3000);
+                loadDelay();
             });
-            
-        
         </script>
     </body>
 </html>
