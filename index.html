@@ -22,26 +22,41 @@
         
             <ul id="list">
             </ul>
+            
+            <div id="loader"></div>
         </div>
         
         <script>
             var listItem = '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>';
             
+            var loader = '<img src="loader.gif" />'
+            
             function listResults() {
                 var $list = $("#list");
                 //this.append( $('<li>Actor</li>') );
                 $list.append(listItem);
+                
+                $("#loader").empty();
                 return this;
+            };
+                        
+            function loadingBar() {
+                $("#loader").append(loader);
             };
 
             function loadDelay() {
-              setTimeout(listResults, 2000);
+                setTimeout(listResults, 2000);
+                loadingBar();
             };            
             
             $('form').submit(function(e) {
                 event.preventDefault(e);
                 loadDelay();
             });
+            
+            
+           
+            
         </script>
     </body>
 </html>
