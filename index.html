@@ -28,34 +28,39 @@
         
         <script>
             var listItem = '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>';
-            
-            var loader = '<img src="loader.gif" />'
+            var loader = '<img src="loader.gif" />';
             
             function listResults() {
                 var $list = $("#list");
                 //this.append( $('<li>Actor</li>') );
                 $list.append(listItem);
                 
-                $("#loader").empty();
                 return this;
             };
                         
             function loadingBar() {
                 $("#loader").append(loader);
             };
+            
+            function hideLoadingBar() {
+                $("#loader").empty();
+            }
 
             function loadDelay() {
-                setTimeout(listResults, 2000);
                 loadingBar();
+
+                $.ajax({
+                    method: 'GET',
+                    url: 'http://api.themoviedb.org/3/search/multi?api_key=21002876c9ca37eae9f1970c0bc7ecb0&query=Fight+Club',
+                    success: listResults,
+                    complete: hideLoadingBar
+                });
             };            
             
             $('form').submit(function(e) {
                 event.preventDefault(e);
                 loadDelay();
             });
-            
-            
-           
             
         </script>
     </body>
