@@ -16,9 +16,9 @@
     </head>
     <body>
         <div id="container">
-            <form>
-                <input type="search">
-                <input id="search" type="submit" value="Search">
+            <form id='search-form'>
+                <input id='search-title' type="search">
+                <input type="submit" value="Search">
             </form>
         
             <ul id="list">
@@ -40,10 +40,22 @@
             function listResults(data) {
                 console.log(data);
                 
+                normalizeData(data);
                 var output = Mustache.render(listItemTemplate, data);
                 
+                console.log(output);
+                
                 var $list = $("#list");
+                $list.empty();
                 $list.append(output);
+            };
+            
+            function normalizeData(data) {
+                for ( var i = 0, len = data.results.length; i < len; ++i ) {
+                  if ( data.results[i].media_type == 'tv' ) {
+                    data.results[i].title = data.results[i].name;
+                  }
+                }
             };
                         
             function loadingBar() {
@@ -56,16 +68,22 @@
 
             function loadDelay() {
                 loadingBar();
+                
+                var queryArgs = { 
+                    api_key: '21002876c9ca37eae9f1970c0bc7ecb0',
+                    query: $('#search-title').val()
+                };
 
                 $.ajax({
                     method: 'GET',
-                    url: 'http://api.themoviedb.org/3/search/multi?api_key=21002876c9ca37eae9f1970c0bc7ecb0&query=Fight+Club',
+                    url: 'http://api.themoviedb.org/3/search/multi',
+                    data: queryArgs,
                     success: listResults,
                     complete: hideLoadingBar
                 });
             };            
             
-            $('form').submit(function(e) {
+            $('#search-form').submit(function(e) {
                 event.preventDefault(e);
                 loadDelay();
             });
