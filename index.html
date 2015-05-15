@@ -6,8 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Font Experiment</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
-        <link rel="stylesheet" href="main.css">
+        <!--<link rel="stylesheet" href="main.css">-->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
         <style>
             #container { width: 640px; }
             .visibility { display: none; }
@@ -26,15 +27,24 @@
             <div id="loader"></div>
         </div>
         
+        <script id="template" type="text/html">
+            {{#results}} 
+                <li>{{title}}</li>
+            {{/results}}
+        </script>
+        
         <script>
-            var listItem = '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>' + '<li>Actor</li>';
             var loader = '<img src="loader.gif" />';
             
-            function listResults() {
+            function listResults(data) {
+                console.log(data);
+                var listItem = document.getElementById('template').innerHTML;
+                var output = Mustache.render(listItem, data);
+                console.log(output);
                 var $list = $("#list");
                 //this.append( $('<li>Actor</li>') );
-                $list.append(listItem);
-                
+                //$list.append(listItem);
+                $list.append(output);
                 return this;
             };
                         
