@@ -35,15 +35,14 @@
         
         <script>
             var loader = '<img src="loader.gif" />';
+            var listItemTemplate = $('#template').html();
             
             function listResults(data) {
                 console.log(data);
-                var listItem = document.getElementById('template').innerHTML;
-                var output = Mustache.render(listItem, data);
-                console.log(output);
+                
+                var output = Mustache.render(listItemTemplate, data);
+                
                 var $list = $("#list");
-                //this.append( $('<li>Actor</li>') );
-                //$list.append(listItem);
                 $list.append(output);
                 return this;
             };
