@@ -9,10 +9,7 @@
         <link rel="stylesheet" href="stylesheets/sass/main.css">
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
-        <script type="text/javascript" src="jquery.debounce-1.0.5.js"></script>
-        <style>
-            
-        </style>
+        <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
     </head>
     <body>
         <div id="container">
@@ -23,6 +20,8 @@
         
             <ul id="list">
             </ul>
+            
+            <div id="display"></div>
             
             <div id="loader"></div>
         </div>
@@ -45,7 +44,7 @@
                 
                 console.log(output);
                 
-                var $list = $("#list");
+                var $list = $('#list');
                 $list.empty();
                 $list.append(output);
             };
@@ -59,11 +58,11 @@
             };
                         
             function loadingBar() {
-                $("#loader").append(loader);
+                $('#loader').append(loader);
             };
             
             function hideLoadingBar() {
-                $("#loader").empty();
+                $('#loader').empty();
             }
 
             function loadDelay() {
@@ -83,18 +82,21 @@
                 });
             };            
             
-            $('#search-title').keyup($.debounce(onkeyup, 900),function() {
-              //  $(this).keyup($.debounce(onkeyup, 300));
-                loadDelay();
-            });
-            
-            
+            $('#search-title').on('keyup', $.debounce( 250, loadDelay ));
             
             $('#search-form').submit(function(e) {
                 event.preventDefault(e);
                 loadDelay();
             });
             
+            $('ul').on('click', 'li', function() {
+                //alert('This is your result');
+                var result = '<p>This is your result</p>';
+                $("#display").append(result);
+                
+                var $list = $('#list');
+                $list.empty();
+            });
         </script>
     </body>
 </html>
