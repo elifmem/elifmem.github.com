@@ -1,0 +1,49 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+$search-box-width: 500px / 640px * 100%;
+
+#container {
+    width: 640px;
+}
+
+input {
+    display: inline-block;
+}
+
+input[type="search"]{
+    width: $search-box-width;
+}
+
+input[type="submit"]{
+    width: 98% - $search-box-width;
+}
+
+#list {
+    background: {
+        color: #eee;
+    }    
+    font: {
+        family: sans-serif;
+        size: 14px;
+    }
+    width: $search-box-width;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include border-radius(0 0 5px 5px);
+    position: relative;
+
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #fff;
+    }
+
+}
+
+
+

@@ -4,20 +4,20 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Font Experiment</title>
+        <title>Prototype</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
-        <!--<link rel="stylesheet" href="main.css">-->
+        <link rel="stylesheet" href="stylesheets/sass/main.css">
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
+        <script type="text/javascript" src="jquery.debounce-1.0.5.js"></script>
         <style>
-            #container { width: 640px; }
-            .visibility { display: none; }
+            
         </style>
     </head>
     <body>
         <div id="container">
             <form id='search-form'>
-                <input id='search-title' type="search">
+                <input id='search-title' placeholder="" type="search">
                 <input type="submit" value="Search">
             </form>
         
@@ -82,6 +82,13 @@
                     complete: hideLoadingBar
                 });
             };            
+            
+            $('#search-title').keyup($.debounce(onkeyup, 900),function() {
+              //  $(this).keyup($.debounce(onkeyup, 300));
+                loadDelay();
+            });
+            
+            
             
             $('#search-form').submit(function(e) {
                 event.preventDefault(e);
