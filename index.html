@@ -21,7 +21,7 @@
             <ul id="list">
             </ul>
             
-            <div id="display"></div>
+            <div id="display-results"></div>
             
             <div id="loader"></div>
         </div>
@@ -30,6 +30,13 @@
             {{#results}} 
                 <li data-media-type="{{media_type}}" data-id="{{id}}">{{title}}</li>
             {{/results}}
+            
+            {{#cast}}
+                <div>
+                    <img src='{{profile_path}}' />
+                    {{character}} {{name}}
+                </div>
+            {{/cast}}
         </script>
         
         <script>
@@ -37,7 +44,7 @@
             var listItemTemplate = $('#template').html();
             
             function listResults(data) {
-                console.log(data);
+               console.log(data);
                 
                 normalizeData(data);
                 var output = Mustache.render(listItemTemplate, data);
@@ -84,6 +91,23 @@
             
             function getActors(mediaType, id) {
                 // ... follow pattern of search ...
+                loadingBar();
+                
+                var URL = 'http://api.themoviedb.org/3/' + mediaType + '/' + id + '/credits';
+                console.log(URL);
+                
+                var queryArgs = { 
+                    api_key: '21002876c9ca37eae9f1970c0bc7ecb0'
+                };
+                
+                $.ajax({
+                    method: 'GET',
+                    url: URL,
+                    data: queryArgs,
+                    success: displayActors,
+                    complete: hideLoadingBar
+                });
+               
             }
             
             $('#search-title').on('keyup', $.debounce( 250, function() {
@@ -95,21 +119,34 @@
                 search($('#search-title').val());
             });
             
+            function displayActors(results) {
+                console.log(results);
+                
+                var output = Mustache.render(listItemTemplate, results);
+                
+                console.log(output);
+                
+                var $cast = $('#display-results');
+                $cast.empty();
+                $cast.append(output);
+            }
+         
             $('ul').on('click', 'li', function(e) {
                 e.preventDefault();
-                
+
                 var result = '<p>This is your result</p>';
-                $("#display").append(result);
-                
+                $("#display-results").append(result);
+
                 var mediaType = $(this).data('media-type');
                 var id = $(this).data('id');
                 console.log(mediaType, id);
-                
+
                 getActors(mediaType, id);
-                
+
                 var $list = $('#list');
                 $list.empty();
-            });
+            });   
+        
         </script>
     </body>
 </html>
