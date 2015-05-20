@@ -28,7 +28,7 @@
         
         <script id="template" type="text/html">
             {{#results}} 
-                <li>{{title}}</li>
+                <li data-media-type="{{media_type}}" data-id="{{id}}">{{title}}</li>
             {{/results}}
         </script>
         
@@ -85,14 +85,19 @@
             $('#search-title').on('keyup', $.debounce( 250, loadDelay ));
             
             $('#search-form').submit(function(e) {
-                event.preventDefault(e);
+                e.preventDefault();
                 loadDelay();
             });
             
-            $('ul').on('click', 'li', function() {
-                //alert('This is your result');
+            $('ul').on('click', 'li', function(e) {
+                e.preventDefault();
+                
                 var result = '<p>This is your result</p>';
                 $("#display").append(result);
+                
+                var mediaType = $(this).data('media-type');
+                var id = $(this).data('id');
+                console.log(mediaType, id);
                 
                 var $list = $('#list');
                 $list.empty();
