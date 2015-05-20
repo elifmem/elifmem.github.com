@@ -65,12 +65,12 @@
                 $('#loader').empty();
             }
 
-            function loadDelay() {
+            function search(title) {
                 loadingBar();
                 
                 var queryArgs = { 
                     api_key: '21002876c9ca37eae9f1970c0bc7ecb0',
-                    query: $('#search-title').val()
+                    query: title
                 };
 
                 $.ajax({
@@ -80,13 +80,19 @@
                     success: listResults,
                     complete: hideLoadingBar
                 });
-            };            
+            };
             
-            $('#search-title').on('keyup', $.debounce( 250, loadDelay ));
+            function getActors(mediaType, id) {
+                // ... follow pattern of search ...
+            }
+            
+            $('#search-title').on('keyup', $.debounce( 250, function() {
+              search($('#search-title').val());
+            } ));
             
             $('#search-form').submit(function(e) {
                 e.preventDefault();
-                loadDelay();
+                search($('#search-title').val());
             });
             
             $('ul').on('click', 'li', function(e) {
@@ -98,6 +104,8 @@
                 var mediaType = $(this).data('media-type');
                 var id = $(this).data('id');
                 console.log(mediaType, id);
+                
+                getActors(mediaType, id);
                 
                 var $list = $('#list');
                 $list.empty();
