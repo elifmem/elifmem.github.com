@@ -8,7 +8,7 @@
 $search-box-width: 500px / 640px * 100%;
 
 #container {
-    width: 640px;
+    width: 100%;
 }
 
 input {
@@ -43,7 +43,25 @@ input[type="submit"]{
         border-bottom: 1px solid #fff;
         cursor: pointer;
     }
+    
+    li::after {
+        content: ">";    
+    }
+}
 
+#display-results {
+    div {
+        width: 45%;
+    }
+    
+    img {
+        @include border-radius(20px);
+        max-width: 100%;
+    }
+    
+    p {
+        width: 100%;
+    }
 }
 
 

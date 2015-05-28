@@ -1,5 +1,5 @@
 #container {
-  width: 640px;
+  width: 100%;
 }
 
 input {
@@ -32,6 +32,23 @@ input[type="submit"] {
   padding: 10px;
   border-bottom: 1px solid #fff;
   cursor: pointer;
+}
+#list li::after {
+  content: ">";
+}
+
+#display-results div {
+  width: 45%;
+}
+#display-results img {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px;
+  max-width: 100%;
+}
+#display-results p {
+  width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */
