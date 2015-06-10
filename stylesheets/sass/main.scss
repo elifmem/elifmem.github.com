@@ -5,10 +5,24 @@
           border-radius: $radius;
 }
 
-$search-box-width: 500px / 640px * 100%;
+$search-box-width: 610px / 640px * 100%;
+$dark-blue: #002842;
+$green: #55be96;
+
+body {
+    background: {
+        color: $dark-blue;
+    }
+}
 
 #container {
     width: 100%;
+}
+
+#search {
+    width: $search-box-width;
+    margin: 10px;
+    font-family: sans-serif;
 }
 
 input {
@@ -16,38 +30,53 @@ input {
 }
 
 input[type="search"]{
-    width: $search-box-width;
+    width: 100%;
 }
 
-input[type="submit"]{
-    width: 98% - $search-box-width;
+.form-control-feedback {
+    margin: 10px;
+}
+
+.glyphicon {
+    color: $green;
 }
 
 #list {
     background: {
-        color: #eee;
+        color: $green;
     }    
     font: {
         family: sans-serif;
         size: 14px;
     }
-    width: $search-box-width;
+    color: $dark-blue;
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
     @include border-radius(0 0 5px 5px);
     position: relative;
+    top: -2px;
 
     li {
-        padding: 10px;
+        padding: 10px 0;
         border-bottom: 1px solid #fff;
         cursor: pointer;
     }
     
-    li::after {
-        content: ">";    
+    p {
+        display: inline-block;
+        width: 100%;
+        padding-left: 10px;
     }
-}
+    
+    p::after {
+        content: ">";
+        float: right;
+        position: relative;
+        left: -10px;
+        }
+    }
 
 #display-results {
     div {

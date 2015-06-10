@@ -9,20 +9,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
         <meta name="description" content="An interactive getting started guide for Brackets.">
         
+        <!-- Bootstrap Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="stylesheets/reset.css">
         <link rel="stylesheet" href="stylesheets/sass/main.css">
+        
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
         <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div id="container">
-            <form id='search-form'>
+            <!--<form id='search-form'>
                 <input id='search-title' placeholder="" type="search">
-                <input type="submit" value="Search">
-            </form>
-        
-            <ul id="list">
-            </ul>
+                <input type="submit" class="glyphicon glyphicon-search" aria-hidden="true" value="Search">
+            </form>-->
+           <div id="search">
+               <form id='search-form'>
+                   <input type="search" class="form-control" id="search-title" placeholder="Search"/>
+                   <span class="glyphicon glyphicon-search form-control-feedback"></span>
+               </form>
+               
+               <ul id="list">
+               </ul>
+            </div>
             
             <div id="display-results"></div>
             
@@ -31,7 +44,7 @@
         
         <script id="template" type="text/html">
             {{#results}} 
-                <li data-media-type="{{media_type}}" data-id="{{id}}">{{title}}</li>
+                <li data-media-type="{{media_type}}" data-id="{{id}}"><p>{{title}}</p></li>
             {{/results}}
             
             {{#cast}}
