@@ -50,8 +50,10 @@
             {{#cast}}
                 <div>
                     <img src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
-                    <p>{{character}}</p>
-                    <p>{{name}}</p>
+                    <p class="info">
+                        <span>{{name}}</span>
+                        <span>{{character}}</span>
+                    </p>
                 </div>
             {{/cast}}
         </script>
@@ -124,7 +126,6 @@
                     success: displayActors,
                     complete: hideLoadingBar
                 });
-               
             }
             
             $('#search-title').on('keyup', $.debounce( 250, function() {
@@ -146,6 +147,15 @@
                 var $cast = $('#display-results');
                 $cast.empty();
                 $cast.append(output);
+            
+                $('#display-results div').each(function(i) {
+                    if ( i % 2 === 0) {
+                        $(this).addClass('left');
+                    } else {
+                        $(this).addClass('right');   
+                    }
+                });
+            
             }
          
             $('ul').on('click', 'li', function(e) {
@@ -162,7 +172,9 @@
 
                 var $list = $('#list');
                 $list.empty();
-            });   
+            
+            });  
+            
         
         </script>
     </body>
