@@ -13,7 +13,7 @@
 }
 
 $search-box-width: 610px / 640px * 100%;
-$dark-blue: #142128;
+$dark-blue: #002842; /*#142128*/
 $light-blue: #5AB1BB;
 $green: #55be96;
 
@@ -25,6 +25,12 @@ body {
     
     font: {
         family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+}
+
+.actor-list {
+    background: {
+        color: $green;
     }
 }
 
@@ -103,17 +109,20 @@ input[type="search"]{
         display: inline-block;
         @include border-radius(1px);
         margin-bottom: 5px;
-        /*background-color: #92DFC2;*/
-        background-color: #A2E3C4;
-        @include box-shadow(0, 10px, 6px, -6px, #777);
+        /*background-color: #92DFC2;
+        background-color: #A2E3C4;*/
+        background-color: #A9FBD7;
+        /*@include box-shadow(0, 10px, 6px, -6px, #777);*/
     
         .profile-pic {
-            width: 55px;
-            height: 73px;
+            width: 60px;
+            height: 60px;
+            /*height: 73px;*/
             overflow: hidden;
             display: inline-block;
             vertical-align: top;
             margin: 2px;
+            @include border-radius(50px);
         }
         
         p {
@@ -133,6 +142,7 @@ input[type="search"]{
     img {
         max-width: 100%;
         display: inline;
+        margin-top: -5px;
     }
     
     

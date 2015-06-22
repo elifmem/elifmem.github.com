@@ -175,8 +175,8 @@
             $('ul').on('click', 'li', function(e) {
                 e.preventDefault();
 
-                var result = '<p>This is your result</p>';
-                $("#display-results").append(result);
+                //var result = '<p>This is your result</p>';
+                //$("#display-results").append(result);
 
                 var mediaType = $(this).data('media-type');
                 var id = $(this).data('id');
@@ -186,6 +186,9 @@
 
                 var $list = $('#list');
                 $list.empty();
+                
+                var $body = $('body');
+                $body.addClass('actor-list');
             });  
             
             function getWorks(id) {
