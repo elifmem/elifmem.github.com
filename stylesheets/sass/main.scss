@@ -1,17 +1,30 @@
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+//box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
+@mixin box-shadow($x, $y, $blur, $spread, $color) {
+    -webkit-box-shadow: $x $y $blur $spread $color;
+    -moz-box-shadow:    $x $y $blur $spread $color; 
+    box-shadow:         $x $y $blur $spread $color; 
 }
 
 $search-box-width: 610px / 640px * 100%;
-$dark-blue: #002842;
+$dark-blue: #142128;
+$light-blue: #5AB1BB;
 $green: #55be96;
+
 
 body {
     background: {
         color: $dark-blue;
+    }
+    
+    font: {
+        family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     }
 }
 
@@ -22,7 +35,6 @@ body {
 #search {
     width: $search-box-width;
     margin: 10px;
-    font-family: sans-serif;
 }
 
 input {
@@ -64,6 +76,10 @@ input[type="search"]{
         cursor: pointer;
     }
     
+    li:last-child {
+        border-bottom: none; 
+    }
+    
     p {
         display: inline-block;
         width: 100%;
@@ -78,47 +94,48 @@ input[type="search"]{
         }
     }
 
-#display-results {
+#display-results, #display-works {
     width: $search-box-width;
     margin: 10px;
     
-    div {
-        width: 45%;
+    .main {
+        width: 100%;
         display: inline-block;
-    }
+        @include border-radius(1px);
+        margin-bottom: 5px;
+        /*background-color: #92DFC2;*/
+        background-color: #A2E3C4;
+        @include box-shadow(0, 10px, 6px, -6px, #777);
     
-    div.right {
-        float: right;
-        
-        img {
-            float: right;
+        .profile-pic {
+            width: 55px;
+            height: 73px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+            margin: 2px;
         }
         
-    }
-    
-    div.left {
-        float: left;
-        
         p {
-            position: relative;
-            top: -142px;
-            left: 87px;
+            display: inline-block;
+            font: {
+                size: 14px;
+            }
+            
+            color: $dark-blue;
+
+            span {
+                display: block;
+            }
         }
     }
     
     img {
-        @include border-radius(5px);
         max-width: 100%;
-        height: 123px;
-        width: 82px;
+        display: inline;
     }
     
-    p {
-        width: 100%;
-        display: inline-block;
-        background-color: #fff;
-        padding: 10px;
-    }
+    
 }
 
 

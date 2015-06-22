@@ -14,7 +14,7 @@
         
         <link rel="stylesheet" href="stylesheets/reset.css">
         <link rel="stylesheet" href="stylesheets/sass/main.css">
-        <link rel="stylesheet" href="stylesheets/cropper.min.css">
+        <link rel="stylesheet" href="cropper.min.css">
         
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
@@ -41,6 +41,8 @@
             
             <div id="display-results"></div>
             
+            <div id="display-works"></div>
+            
             <div id="loader"></div>
         </div>
         
@@ -50,8 +52,10 @@
             {{/results}}
             
             {{#cast}}
-                <div>
-                    <img src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
+                <div data-id="{{id}}" class="main">
+                    <div class="profile-pic">
+                        <img src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
+                    </div>
                     <p class="info">
                         <span>{{name}}</span>
                         <span>{{character}}</span>
@@ -60,9 +64,26 @@
             {{/cast}}
         </script>
         
+        <script id="template-works" type="text/html">
+            {{#cast}}
+             <div data-id="{{id}}" class="main">
+                    <div class="profile-pic">
+                        <img src='https://image.tmdb.org/t/p/w92{{poster_path}}' />
+                    </div>
+                    <p class="info">
+                        <span>{{title}}</span>
+                        <span>{{name}}</span>
+                    </p>
+                </div>    
+            {{/cast}}
+        </script>
+            
+            
+        
         <script>
             var loader = '<img src="loader.gif" />';
             var listItemTemplate = $('#template').html();
+            var workItemTemplate = $('#template-works').html();
             
             function listResults(data) {
                console.log(data);
@@ -149,17 +170,6 @@
                 var $cast = $('#display-results');
                 $cast.empty();
                 $cast.append(output);
-            
-                //$('#display-results div').each(function(i) {
-                //    if ( i % 2 === 0) {
-                //        $(this).addClass('left');
-                //    } else {
-                //        $(this).addClass('right');   
-                //    }
-                //});
-                
-                $('#display-results div img').cropper(autoCropArea);
-            
             }
          
             $('ul').on('click', 'li', function(e) {
@@ -176,9 +186,55 @@
 
                 var $list = $('#list');
                 $list.empty();
-            
             });  
             
+            function getWorks(id) {
+                // ... follow pattern of search ...
+                loadingBar();
+
+                var URL = 'http://api.themoviedb.org/3/person/' + id + '/movie_credits';
+                
+                console.log(URL);
+
+                var queryArgs = { 
+                    api_key: '21002876c9ca37eae9f1970c0bc7ecb0'
+                };
+
+                $.ajax({
+                    method: 'GET',
+                    url: URL,
+                    data: queryArgs,
+                    success: displayWorks,
+                    complete: hideLoadingBar
+                });
+            }
+            
+            function displayWorks(works) {
+                console.log(works);
+                
+                var output = Mustache.render(workItemTemplate, works);
+                
+                console.log(output);
+                
+                var $works = $('#display-works');
+                $works.empty();
+                $works.append(output);
+            }
+            
+            $('#display-results').on('click', 'div', function(e) {
+                e.preventDefault();
+
+                var result = '<p>This is your result</p>';
+                $("#display-works").append(result);
+                
+                var id = $(this).data('id');
+                console.log(id);
+
+                getWorks(id);
+
+                var $list = $('#display-results');
+                $list.empty();
+            });  
         
         </script>
     </body>

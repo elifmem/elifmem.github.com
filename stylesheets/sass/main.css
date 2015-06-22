@@ -1,5 +1,6 @@
 body {
-  background-color: #002842;
+  background-color: #142128;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #container {
@@ -9,7 +10,6 @@ body {
 #search {
   width: 95.3125%;
   margin: 10px;
-  font-family: sans-serif;
 }
 
 input {
@@ -32,7 +32,7 @@ input[type="search"] {
   background-color: #55be96;
   font-family: sans-serif;
   font-size: 14px;
-  color: #002842;
+  color: #142128;
   width: 100%;
   list-style: none;
   padding: 0;
@@ -49,6 +49,9 @@ input[type="search"] {
   border-bottom: 1px solid #fff;
   cursor: pointer;
 }
+#list li:last-child {
+  border-bottom: none;
+}
 #list p {
   display: inline-block;
   width: 100%;
@@ -61,42 +64,43 @@ input[type="search"] {
   left: -10px;
 }
 
-#display-results {
+#display-results, #display-works {
   width: 95.3125%;
   margin: 10px;
 }
-#display-results div {
-  width: 45%;
-  display: inline-block;
-}
-#display-results div.right {
-  float: right;
-}
-#display-results div.right img {
-  float: right;
-}
-#display-results div.left {
-  float: left;
-}
-#display-results div.left p {
-  position: relative;
-  top: -142px;
-  left: 87px;
-}
-#display-results img {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-  max-width: 100%;
-  height: 123px;
-  width: 82px;
-}
-#display-results p {
+#display-results .main, #display-works .main {
   width: 100%;
   display: inline-block;
-  background-color: #fff;
-  padding: 10px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  margin-bottom: 5px;
+  /*background-color: #92DFC2;*/
+  background-color: #A2E3C4;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+#display-results .main .profile-pic, #display-works .main .profile-pic {
+  width: 55px;
+  height: 73px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  margin: 2px;
+}
+#display-results .main p, #display-works .main p {
+  display: inline-block;
+  font-size: 14px;
+  color: #142128;
+}
+#display-results .main p span, #display-works .main p span {
+  display: block;
+}
+#display-results img, #display-works img {
+  max-width: 100%;
+  display: inline;
 }
 
 /*# sourceMappingURL=main.css.map */
