@@ -195,33 +195,49 @@
                 // ... follow pattern of search ...
                 loadingBar();
 
-                var URL = 'http://api.themoviedb.org/3/person/' + id + '/movie_credits';
-                
-                console.log(URL);
-
                 var queryArgs = { 
                     api_key: '21002876c9ca37eae9f1970c0bc7ecb0'
                 };
 
-                $.ajax({
+                var movieUrl = 'http://api.themoviedb.org/3/person/' + id + '/movie_credits';
+                var movieDeferred = $.ajax({
                     method: 'GET',
-                    url: URL,
-                    data: queryArgs,
-                    success: displayWorks,
-                    complete: hideLoadingBar
+                    url: movieUrl,
+                    data: queryArgs
                 });
+                
+                var tvUrl = 'http://api.themoviedb.org/3/person/' + id + '/tv_credits';
+                var tvDeferred = $.ajax({
+                    method: 'GET',
+                    url: tvUrl,
+                    data: queryArgs,
+                });
+                
+                $.when(movieDeferred, tvDeferred).then(
+                  function(movieData, tvData) {
+                    var movieWorks = movieData[0];
+                    var tvWorks = tvData[0];
+                      
+                    displayWorks(movieWorks, tvWorks);
+                    hideLoadingBar();
+                  },
+                  hideLoadingBar);
             }
             
-            function displayWorks(works) {
-                console.log(works);
+            function displayWorks(movieWorks, tvWorks) {
+                console.log('movieWorks', movieWorks);
+                console.log('tvWorks', tvWorks);
                 
-                var output = Mustache.render(workItemTemplate, works);
+                var movieOutput = Mustache.render(workItemTemplate, movieWorks);
+                var tvOutput = Mustache.render(workItemTemplate, tvWorks);
                 
-                console.log(output);
+                console.log('movieOutput', movieOutput);
+                console.log('tvOutput', tvOutput);
                 
                 var $works = $('#display-works');
                 $works.empty();
-                $works.append(output);
+                $works.append(movieOutput);
+                $works.append(tvOutput);
             }
             
             $('#display-results').on('click', 'div', function(e) {
