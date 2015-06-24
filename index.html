@@ -57,8 +57,7 @@
                         <img src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
                     </div>
                     <p class="info">
-                        <span>{{name}}</span>
-                        <span>{{character}}</span>
+                        {{name}} is <span class="character">{{character}}</span>
                     </p>
                 </div>
             {{/cast}}
@@ -71,8 +70,8 @@
                         <img src='https://image.tmdb.org/t/p/w92{{poster_path}}' />
                     </div>
                     <p class="info">
-                        <span>{{title}}</span>
-                        <span>{{name}}</span>
+                        <span>{{title}} {{release_date}}</span>
+                        <span>{{name}} {{episode_count}} {{first_air_date}}</span>
                     </p>
                 </div>    
             {{/cast}}

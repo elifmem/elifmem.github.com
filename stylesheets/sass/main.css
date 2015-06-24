@@ -1,13 +1,14 @@
-/*#142128*/
+/*#142128, #002842*/
 body {
-  background-color: #002842;
+  background-color: #021e2f;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.actor-list {
-  background-color: #55be96;
-}
-
+/*.actor-list {
+    background: {
+        color: $green;
+    }
+}*/
 #container {
   width: 100%;
 }
@@ -30,14 +31,14 @@ input[type="search"] {
 }
 
 .glyphicon {
-  color: #55be96;
+  color: #48de9f;
 }
 
 #list {
-  background-color: #55be96;
+  background-color: #48de9f;
   font-family: sans-serif;
   font-size: 14px;
-  color: #002842;
+  color: #021e2f;
   width: 100%;
   list-style: none;
   padding: 0;
@@ -83,29 +84,32 @@ input[type="search"] {
   margin-bottom: 5px;
   /*background-color: #92DFC2;
   background-color: #A2E3C4;*/
-  background-color: #A9FBD7;
+  background-color: #48de9f;
   /*@include box-shadow(0, 10px, 6px, -6px, #777);*/
 }
 #display-results .main .profile-pic, #display-works .main .profile-pic {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   /*height: 73px;*/
   overflow: hidden;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
   margin: 2px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  border-radius: 50px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
 }
 #display-results .main p, #display-works .main p {
   display: inline-block;
   font-size: 14px;
-  color: #002842;
+  color: #021e2f;
 }
 #display-results .main p span, #display-works .main p span {
-  display: block;
+  display: inline;
+}
+#display-results .main p .character, #display-works .main p .character {
+  font-style: oblique;
 }
 #display-results img, #display-works img {
   max-width: 100%;
