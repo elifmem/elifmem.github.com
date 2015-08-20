@@ -14,14 +14,14 @@
         
         <link rel="stylesheet" href="stylesheets/reset.css">
         <link rel="stylesheet" href="stylesheets/sass/main.css">
-        <link rel="stylesheet" href="cropper.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
         
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
         <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="cropper.min.js" ></script>
+        
     </head>
     <body>
         <div id="container">
@@ -57,7 +57,7 @@
                         <img src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
                     </div>
                     <p class="info">
-                        {{name}} is <span class="character">{{character}}</span>
+                        {{name}} plays <span class="character">{{character}}</span>
                     </p>
                 </div>
             {{/cast}}
@@ -65,14 +65,14 @@
         
         <script id="template-works" type="text/html">
             {{#cast}}
-             <div data-id="{{id}}" class="main">
-                    <div class="profile-pic">
+             <div data-id="{{id}}" class="works">
+                    <div>
                         <img src='https://image.tmdb.org/t/p/w92{{poster_path}}' />
                     </div>
-                    <p class="info">
+                    <!--<p class="info">
                         <span>{{title}} {{release_date}}</span>
                         <span>{{name}} {{episode_count}} {{first_air_date}}</span>
-                    </p>
+                    </p>-->
                 </div>    
             {{/cast}}
         </script>
