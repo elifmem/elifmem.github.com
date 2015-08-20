@@ -154,9 +154,19 @@
               search($('#search-title').val());
             } ));
             
+            $('#search-title').on('click', function() {
+                $(this).select();
+            });
+            
             $('#search-form').submit(function(e) {
                 e.preventDefault();
                 search($('#search-title').val());
+            });
+            
+            $('#list').on('click', 'li', function(e) {
+                e.preventDefault();
+                var searchText = $(this).text();
+                $('#search-title').val( searchText );
             });
             
             function displayActors(results) {
