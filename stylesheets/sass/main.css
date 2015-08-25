@@ -70,10 +70,6 @@ input[type="search"] {
   left: -10px;
 }
 
-.null {
-  background-color: white;
-}
-
 #display-results, #display-works {
   width: 95.3125%;
   margin: 0 10px;
@@ -137,6 +133,10 @@ input[type="search"] {
   height: 138px;
   background-color: #021e2f;
   display: block;
+}
+
+.null {
+  background-color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

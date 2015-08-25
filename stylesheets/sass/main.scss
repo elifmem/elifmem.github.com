@@ -100,12 +100,6 @@ input[type="search"]{
         }
     }
 
-
-            
-.null {
-    background-color: white;
-    }
-
 #display-results, #display-works {
     width: $search-box-width;
     margin: 0 10px;
@@ -179,6 +173,10 @@ input[type="search"]{
         }
     }
 }
+      
+.null {
+    background-color: white;
+    }
 
 
 

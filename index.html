@@ -193,13 +193,11 @@
                 
                 $(image).each(function() {
                     var src = $(this).attr('src');
-                    if ( src == URL ) {
-                        $(image).parent().addClass('null');
+                    if ( src === URL ) {
+                        $(this).parent().addClass('null');
                         $(this).remove();
                     }
                 });
-                
-                 
             }
          
             $('ul').on('click', 'li', function(e) {
@@ -268,6 +266,19 @@
                 $works.empty();
                 $works.append(movieOutput);
                 $works.append(tvOutput);
+                
+                //Replacing missing images with a background color
+                var URL = 'https://image.tmdb.org/t/p/w92';
+                var image = $works.find('img');
+                console.log(image);
+                
+                $(image).each(function() {
+                    var src = $(this).attr('src');
+                    if ( src === URL ) {
+                        $(this).parent().addClass('null');
+                        $(this).remove();
+                    }
+                });
             }
             
             $('#display-results').on('click', 'div', function(e) {
