@@ -70,6 +70,10 @@ input[type="search"] {
   left: -10px;
 }
 
+.null {
+  background-color: white;
+}
+
 #display-results, #display-works {
   width: 95.3125%;
   margin: 0 10px;

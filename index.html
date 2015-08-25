@@ -54,7 +54,7 @@
             {{#cast}}
                 <div data-id="{{id}}" class="main">
                     <div class="profile-pic">
-                        <img src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
+                        <img class='img-link' src='https://image.tmdb.org/t/p/w92{{profile_path}}' />
                     </div>
                     <p class="info">
                         {{name}} plays <span class="character">{{character}}</span>
@@ -167,6 +167,12 @@
                 e.preventDefault();
                 var searchText = $(this).text();
                 $('#search-title').val( searchText );
+                
+                var $works = $('#display-works');
+                var $cast = $('#display-results');
+                
+                $works.children().remove();
+                $cast.children().remove();
             });
             
             function displayActors(results) {
@@ -179,6 +185,21 @@
                 var $cast = $('#display-results');
                 $cast.empty();
                 $cast.append(output);
+                
+                //Replacing missing images with a background color
+                var URL = 'https://image.tmdb.org/t/p/w92';
+                var image = $cast.find('img');
+                console.log(image);
+                
+                $(image).each(function() {
+                    var src = $(this).attr('src');
+                    if ( src == URL ) {
+                        $(image).parent().addClass('null');
+                        $(this).remove();
+                    }
+                });
+                
+                 
             }
          
             $('ul').on('click', 'li', function(e) {
