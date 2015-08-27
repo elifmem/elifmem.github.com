@@ -13,6 +13,7 @@
 }
 
 $search-box-width: 610px / 640px * 100%;
+$search-box-margin: (30px / 640px * 100%) / 2;
 $dark-blue: #021e2f; /*#142128, #002842*/
 $light-blue: #5AB1BB;
 $green: #48de9f;
@@ -28,19 +29,17 @@ body {
     }
 }
 
-/*.actor-list {
-    background: {
-        color: $green;
-    }
-}*/
-
 #container {
     width: 100%;
 }
 
 #search {
     width: $search-box-width;
-    margin: 10px;
+    position: relative;
+    display: inline-block;
+    left: $search-box-margin;
+    right: $search-box-margin;
+    top: 20px;
 }
 
 input {
@@ -51,8 +50,12 @@ input[type="search"]{
     width: 100%;
 }
 
-.form-control-feedback {
-    margin: 10px;
+#search-form {
+    margin-top: 30px;
+    
+    .form-control-feedback {
+    top: 30px;
+    }
 }
 
 .glyphicon {

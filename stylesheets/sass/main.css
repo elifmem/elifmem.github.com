@@ -4,18 +4,17 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-/*.actor-list {
-    background: {
-        color: $green;
-    }
-}*/
 #container {
   width: 100%;
 }
 
 #search {
   width: 95.3125%;
-  margin: 10px;
+  position: relative;
+  display: inline-block;
+  left: 2.34375%;
+  right: 2.34375%;
+  top: 20px;
 }
 
 input {
@@ -26,8 +25,11 @@ input[type="search"] {
   width: 100%;
 }
 
-.form-control-feedback {
-  margin: 10px;
+#search-form {
+  margin-top: 30px;
+}
+#search-form .form-control-feedback {
+  top: 30px;
 }
 
 .glyphicon {

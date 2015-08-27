@@ -8,6 +8,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
         <meta name="description" content="An interactive getting started guide for Brackets.">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         
         <!-- Bootstrap Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -154,7 +155,8 @@
               search($('#search-title').val());
             } ));
             
-            $('#search-title').on('click', function() {
+            $('#search-title').on('focus', function(e) {
+                e.preventDefault();
                 $(this).select();
             });
             
