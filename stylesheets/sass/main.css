@@ -72,7 +72,9 @@ input[type="search"] {
 
 #display-results, #display-works {
   width: 95.3125%;
-  margin: 30px 10px 0 10px;
+  margin-left: 2.34375%;
+  margin-right: 2.34375%;
+  margin-top: 40px;
   display: inline-block;
 }
 #display-results .main, #display-works .main {
@@ -125,8 +127,8 @@ input[type="search"] {
   float: left;
   display: inline-block;
   vertical-align: top;
-  margin-right: 11%;
-  margin-top: 2%;
+  margin-right: 4.7592%;
+  margin-top: 2.3796%;
 }
 #display-results .works div, #display-works .works div {
   width: 92px;

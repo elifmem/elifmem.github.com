@@ -14,6 +14,8 @@
 
 $search-box-width: 610px / 640px * 100%;
 $search-box-margin: (30px / 640px * 100%) / 2;
+$poster-right-margin: 4.7592%;
+$poster-top-margin: $poster-right-margin / 2;
 $dark-blue: #021e2f; /*#142128, #002842*/
 $light-blue: #5AB1BB;
 $green: #48de9f;
@@ -102,7 +104,9 @@ input[type="search"]{
 
 #display-results, #display-works {
     width: $search-box-width;
-    margin: 30px 10px 0 10px;
+    margin-left: $search-box-margin;
+    margin-right: $search-box-margin;
+    margin-top: 40px;
     display: inline-block;
     
     .main {
@@ -162,8 +166,8 @@ input[type="search"]{
         float: left;
         display: inline-block;
         vertical-align: top;
-        margin-right: 11%;
-        margin-top: 2%;
+        margin-right: $poster-right-margin;
+        margin-top: $poster-top-margin;
         
         div {
             width: 92px;
