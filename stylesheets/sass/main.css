@@ -72,7 +72,7 @@ input[type="search"] {
 
 #display-results, #display-works {
   width: 95.3125%;
-  margin: 0 10px;
+  margin: 30px 10px 0 10px;
   display: inline-block;
 }
 #display-results .main, #display-works .main {
