@@ -50,12 +50,9 @@ input[type="search"]{
     width: 100%;
 }
 
-#search-form {
-    margin-top: 30px;
-    
-    .form-control-feedback {
-    top: 30px;
-    }
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
 }
 
 .glyphicon {
