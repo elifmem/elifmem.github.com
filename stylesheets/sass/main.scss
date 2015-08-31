@@ -12,11 +12,17 @@
     box-shadow:         $x $y $blur $spread $color; 
 }
 
+@mixin placeholder($color) {
+    -webkit-input-placeholder: $color;
+    -moz-placeholder: $color;
+    -ms-input-placeholder: $color;
+}
+
 $search-box-width: 610px / 640px * 100%;
 $search-box-margin: (30px / 640px * 100%) / 2;
 $poster-right-margin: 4.7592%;
 $poster-top-margin: $poster-right-margin / 2;
-$dark-blue: #021e2f; /*#142128, #002842*/
+$dark-blue: #1f3032; /*#142128, #002842*/
 $light-blue: #5AB1BB;
 $green: #48de9f;
 
@@ -35,13 +41,38 @@ body {
     width: 100%;
 }
 
+.logo {
+    display: inline-block;
+    position: relative;
+    top: -90px;
+    
+    svg {
+        max-width: 120%;
+        position: relative;
+        left: -50px;
+        fill: #fe757c;
+    }
+}
+
+#animation {
+    position: relative;
+    top: 0px;
+    transition-property: top;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+}
+
+.moveup {
+    top: -90px;
+}
+
 #search {
     width: $search-box-width;
     position: relative;
     display: inline-block;
     left: $search-box-margin;
     right: $search-box-margin;
-    top: 20px;
+    top: -250px;
 }
 
 input {
@@ -52,13 +83,25 @@ input[type="search"]{
     width: 100%;
 }
 
+input[placeholder="Search"] {
+    @include placeholder($green);
+}
+
 .form-control {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
     border: none;
+    height: 40px;
+}
+
+.form-control-feedback {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .glyphicon {
     color: $green;
+    font-size: 1.2em;
 }
 
 #list {
