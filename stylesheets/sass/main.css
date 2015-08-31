@@ -28,10 +28,6 @@ body {
   transition-timing-function: ease-out;
 }
 
-.moveup {
-  top: -90px;
-}
-
 #search {
   width: 95.3125%;
   position: relative;
