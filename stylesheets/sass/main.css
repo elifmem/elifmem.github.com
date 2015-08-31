@@ -9,9 +9,9 @@ body {
 }
 
 .logo {
-  display: inline-block;
+  display: block;
   position: relative;
-  top: -90px;
+  height: 10px;
 }
 .logo svg {
   max-width: 120%;
@@ -31,10 +31,10 @@ body {
 #search {
   width: 95.3125%;
   position: relative;
-  display: inline-block;
+  display: block;
   left: 2.34375%;
   right: 2.34375%;
-  top: -250px;
+  top: 180px;
 }
 
 input {

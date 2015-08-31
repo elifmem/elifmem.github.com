@@ -42,9 +42,9 @@ body {
 }
 
 .logo {
-    display: inline-block;
+    display: block;
     position: relative;
-    top: -90px;
+    height: 10px;
     
     svg {
         max-width: 120%;
@@ -65,10 +65,10 @@ body {
 #search {
     width: $search-box-width;
     position: relative;
-    display: inline-block;
+    display: block;
     left: $search-box-margin;
     right: $search-box-margin;
-    top: -250px;
+    top: 180px;
 }
 
 input {

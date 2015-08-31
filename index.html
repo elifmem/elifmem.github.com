@@ -182,6 +182,9 @@
                 
                 $works.children().remove();
                 $cast.children().remove();
+                
+                var $top = $('#animation');
+                $top.css('top', '-160px');
             });
             
             function displayActors(results) {
@@ -226,9 +229,6 @@
                 
                 var $body = $('body');
                 $body.addClass('actor-list');
-                
-                var $top = $('#animation');
-                $top.css('top', '-80px');
             });  
             
             function getWorks(id) {
