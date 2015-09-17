@@ -18,18 +18,19 @@
     -ms-input-placeholder: $color;
 }
 
-$search-box-width: 610px / 640px * 100%;
-$search-box-margin: (30px / 640px * 100%) / 2;
+$search-box-width: 620px / 640px * 100%;
+$search-box-margin: (20px / 640px * 100%) / 2;
 $poster-right-margin: 4.7592%;
 $poster-top-margin: $poster-right-margin / 2;
-$dark-blue: #1f3032; /*#142128, #002842*/
+$background: #6fe4d0; /*#142128, #002842*/
+$yellow: #fff78f;
 $light-blue: #5AB1BB;
 $green: #48de9f;
 
 
 body {
     background: {
-        color: $dark-blue;
+        color: $background;
     }
     
     font: {
@@ -39,36 +40,39 @@ body {
 
 #container {
     width: 100%;
+    margin-top: 20px;
 }
 
-.logo {
-    display: block;
+/*.logo {
+    display: inline-block;
     position: relative;
-    height: 10px;
+    height: 100%;
     
     svg {
         max-width: 120%;
         position: relative;
         left: -50px;
         fill: #fe757c;
+        height: inherit;
     }
-}
+}*/
 
-#animation {
+/*#animation {
     position: relative;
-    top: 0px;
+    top: 60px;
     transition-property: top;
     transition-duration: 1s;
     transition-timing-function: ease-out;
-}
+    display: inline-block;
+}*/
 
 #search {
     width: $search-box-width;
     position: relative;
-    display: block;
-    left: $search-box-margin;
-    right: $search-box-margin;
-    top: 180px;
+    display: inline-block;
+    margin-left: $search-box-margin;
+    margin-right: $search-box-margin;
+    /*top: -53px;*/
 }
 
 input {
@@ -84,8 +88,8 @@ input[placeholder="Search"] {
 }
 
 .form-control {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid $green;
     height: 40px;
 }
 
@@ -102,24 +106,25 @@ input[placeholder="Search"] {
 
 #list {
     background: {
-        color: $green;
+        color: white;
     }    
     font: {
         family: sans-serif;
         size: 14px;
     }
-    color: $dark-blue;
+    color: #242424;
     width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
-    @include border-radius(0 0 5px 5px);
+    @include border-radius(0 0 4px 4px);
     position: relative;
     top: -2px;
+    border: 1px solid $green;
 
     li {
         padding: 10px 0;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid $green;
         cursor: pointer;
     }
     
@@ -143,22 +148,27 @@ input[placeholder="Search"] {
 
 #display-results, #display-works {
     width: $search-box-width;
+    position: relative;
     margin-left: $search-box-margin;
     margin-right: $search-box-margin;
-    margin-top: 40px;
+   
+    @include border-radius(4px);
     display: inline-block;
+    position: relative;
+    background-color: #fff;
+    display: inline-block;
+    
+    
+    .main:first-child {
+        border-top: 1px solid #48de9f;
+    }
     
     .main {
         width: 100%;
         display: inline-block;
-        /*@include border-radius(4px);*/
-        margin-bottom: 5px;
-        /*background-color: #92DFC2;
-        background-color: #A2E3C4;
-        background-color: #fff;*/
-        /*@include box-shadow(0, 10px, 6px, -6px, #777);*/
-        border-bottom: 1px solid $green;
-        /*border-left: 2px solid $green;*/
+        padding: 2px;
+        border-bottom: 1px solid $background;
+        border-width: thin;
             
         .profile-pic {
             width: 80px;
@@ -179,10 +189,12 @@ input[placeholder="Search"] {
                 weight: 300;
             }
             
-            color: #fff;
-
+            color: $background;
+            vertical-align: middle;
+            
             span {
-                display: inline;
+                display: block;
+                margin-top: 10px;
             }
                 
             .character {
@@ -205,16 +217,22 @@ input[placeholder="Search"] {
         float: left;
         display: inline-block;
         vertical-align: top;
-        margin-right: $poster-right-margin;
-        margin-top: $poster-top-margin;
+        /*margin-right: 1.182795698925%;*/
+        margin: inherit;
+        margin-right: 2.3796%;
+        margin-top: 2.3796%;
         
         div {
             width: 92px;
             height: 138px;
-            background-color: $dark-blue;
+            background-color: #fff;
             display: block;
         }
     }
+}
+
+footer {
+    display: inline-block;
 }
       
 .null {

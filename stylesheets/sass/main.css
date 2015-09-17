@@ -1,40 +1,42 @@
 /*#142128, #002842*/
 body {
-  background-color: #1f3032;
+  background-color: #6fe4d0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #container {
   width: 100%;
+  margin-top: 20px;
 }
 
-.logo {
-  display: block;
-  position: relative;
-  height: 10px;
-}
-.logo svg {
-  max-width: 120%;
-  position: relative;
-  left: -50px;
-  fill: #fe757c;
-}
-
-#animation {
-  position: relative;
-  top: 0px;
-  transition-property: top;
-  transition-duration: 1s;
-  transition-timing-function: ease-out;
-}
-
+/*.logo {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    
+    svg {
+        max-width: 120%;
+        position: relative;
+        left: -50px;
+        fill: #fe757c;
+        height: inherit;
+    }
+}*/
+/*#animation {
+    position: relative;
+    top: 60px;
+    transition-property: top;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    display: inline-block;
+}*/
 #search {
-  width: 95.3125%;
+  width: 96.875%;
   position: relative;
-  display: block;
-  left: 2.34375%;
-  right: 2.34375%;
-  top: 180px;
+  display: inline-block;
+  margin-left: 1.5625%;
+  margin-right: 1.5625%;
+  /*top: -53px;*/
 }
 
 input {
@@ -52,8 +54,8 @@ input[placeholder="Search"] {
 }
 
 .form-control {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
+  background-color: white;
+  border: 1px solid #48de9f;
   height: 40px;
 }
 
@@ -69,24 +71,25 @@ input[placeholder="Search"] {
 }
 
 #list {
-  background-color: #48de9f;
+  background-color: white;
   font-family: sans-serif;
   font-size: 14px;
-  color: #1f3032;
+  color: #242424;
   width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
-  -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
-  -ms-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  -ms-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
   position: relative;
   top: -2px;
+  border: 1px solid #48de9f;
 }
 #list li {
   padding: 10px 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #48de9f;
   cursor: pointer;
 }
 #list li:last-child {
@@ -105,23 +108,28 @@ input[placeholder="Search"] {
 }
 
 #display-results, #display-works {
-  width: 95.3125%;
-  margin-left: 2.34375%;
-  margin-right: 2.34375%;
-  margin-top: 40px;
+  width: 96.875%;
+  position: relative;
+  margin-left: 1.5625%;
+  margin-right: 1.5625%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
   display: inline-block;
+  position: relative;
+  background-color: #fff;
+  display: inline-block;
+}
+#display-results .main:first-child, #display-works .main:first-child {
+  border-top: 1px solid #48de9f;
 }
 #display-results .main, #display-works .main {
   width: 100%;
   display: inline-block;
-  /*@include border-radius(4px);*/
-  margin-bottom: 5px;
-  /*background-color: #92DFC2;
-  background-color: #A2E3C4;
-  background-color: #fff;*/
-  /*@include box-shadow(0, 10px, 6px, -6px, #777);*/
-  border-bottom: 1px solid #48de9f;
-  /*border-left: 2px solid $green;*/
+  padding: 2px;
+  border-bottom: 1px solid #6fe4d0;
+  border-width: thin;
 }
 #display-results .main .profile-pic, #display-works .main .profile-pic {
   width: 80px;
@@ -141,10 +149,12 @@ input[placeholder="Search"] {
   font-size: 14px;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 300;
-  color: #fff;
+  color: #6fe4d0;
+  vertical-align: middle;
 }
 #display-results .main p span, #display-works .main p span {
-  display: inline;
+  display: block;
+  margin-top: 10px;
 }
 #display-results .main p .character, #display-works .main p .character {
   font-style: oblique;
@@ -161,14 +171,20 @@ input[placeholder="Search"] {
   float: left;
   display: inline-block;
   vertical-align: top;
-  margin-right: 4.7592%;
+  /*margin-right: 1.182795698925%;*/
+  margin: inherit;
+  margin-right: 2.3796%;
   margin-top: 2.3796%;
 }
 #display-results .works div, #display-works .works div {
   width: 92px;
   height: 138px;
-  background-color: #1f3032;
+  background-color: #fff;
   display: block;
+}
+
+footer {
+  display: inline-block;
 }
 
 .null {
