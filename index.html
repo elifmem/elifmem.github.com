@@ -73,11 +73,8 @@
              <div data-id="{{id}}" class="works">
                     <div>
                         <img src='https://image.tmdb.org/t/p/w92{{poster_path}}' />
+                        <p class="movie-info">{{title}} {{name}}</p>
                     </div>
-                    <!--<p class="info">
-                        <span>{{title}} {{release_date}}</span>
-                        <span>{{name}} {{episode_count}} {{first_air_date}}</span>
-                    </p>-->
                 </div>    
             {{/cast}}
         </script>
@@ -205,7 +202,7 @@
                 $(image).each(function() {
                     var src = $(this).attr('src');
                     if ( src === URL ) {
-                        $(this).parent().addClass('null');
+                        $(this).parent().addClass('null-act');
                         $(this).remove();
                     }
                 });
@@ -278,16 +275,24 @@
                 $works.append(movieOutput);
                 $works.append(tvOutput);
                 
+                
+                var title = $works.children('p').text();
+                var trimmedTitle = $.trim(title);
+                $works.children('p').text(trimmedTitle);
+                
+                
                 //Replacing missing images with a background color
                 var URL = 'https://image.tmdb.org/t/p/w92';
-                var image = $works.find('img');
-                console.log(image);
+                var $images = $works.find('img');
+                console.log($images);
                 
-                $(image).each(function() {
-                    var src = $(this).attr('src');
+                $images.each(function() {
+                    var $image = $(this);
+                    
+                    var src = $image.attr('src');
                     if ( src === URL ) {
-                        $(this).parent().addClass('null');
-                        $(this).remove();
+                        $image.closest('div').addClass('null-mov');
+                        $image.remove();
                     }
                 });
             }
