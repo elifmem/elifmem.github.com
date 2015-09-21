@@ -26,8 +26,6 @@
     </head>
     <body>
         <div id="container">
-            <div id="animation">
-            <!--<div class='logo'></div>-->
            <div id="search">
                <form id='search-form'>
                    <input type="search" class="form-control" id="search-title" placeholder="Search"/>
@@ -36,8 +34,10 @@
                
                <ul id="list">
                </ul>
+               
+               <p id='tagline'>An app for movie & cast lookup.</p>
             </div>
-                </div>
+                
             
             <div id="display-results"></div>
             
@@ -45,9 +45,7 @@
             
             <div id="loader"></div>
             
-            <footer>
-                <p>An app for movie & cast lookup.</p>
-                
+            <footer><img class='logo' src='images/logo.svg'/>
             </footer>
         </div>
         
@@ -177,10 +175,11 @@
                 $works.children().remove();
                 $cast.children().remove();
                 
-                var $top = $('#animation');
-                $top.css('top', '-100px');
+                var $top = $('#search');
+                $top.css('top', '0');
                 
                 $('footer').hide();
+                $('#tagline').hide();
             });
             
             function displayActors(results) {

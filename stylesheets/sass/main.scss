@@ -43,36 +43,16 @@ body {
     margin-top: 10px;
 }
 
-/*.logo {
-    display: inline-block;
-    position: relative;
-    height: 100%;
-    
-    svg {
-        max-width: 120%;
-        position: relative;
-        left: -50px;
-        fill: #fe757c;
-        height: inherit;
-    }
-}*/
-
-/*#animation {
-    position: relative;
-    top: 60px;
-    transition-property: top;
-    transition-duration: 1s;
-    transition-timing-function: ease-out;
-    display: inline-block;
-}*/
-
 #search {
     width: $search-box-width;
     position: relative;
     display: inline-block;
     margin-left: $search-box-margin;
     margin-right: $search-box-margin;
-    /*top: -53px;*/
+    top: 40px;
+    transition-property: top;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
 }
 
 input {
@@ -102,6 +82,12 @@ input[placeholder="Search"] {
 .glyphicon {
     color: $green;
     font-size: 1.2em;
+}
+
+p#tagline {
+    text-align: center;
+    top: 20px;
+    position: relative;
 }
 
 #list {
@@ -247,6 +233,16 @@ input[placeholder="Search"] {
 
 footer {
     display: inline-block;
+    position: relative;
+    top: 230px;
+    width: 100%;
+}
+
+.logo {
+    max-width: 60%;
+    display: block;
+    position: relative;
+    margin: 0 20%;
 }
       
 .null-act {
