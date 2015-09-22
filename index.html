@@ -43,10 +43,20 @@
             
             <div id="display-works"></div>
             
-            <div id="loader"></div>
+            <div id="loader">
+            </div>
             
-            <footer><img class='logo' src='images/logo.svg'/>
-            </footer>
+            <footer><img class='logo' src='images/logo.svg'/></footer>
+            
+            <!--<div id="background">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="320px" height="85.48px" viewBox="0 0 293.552 85.48" enable-background="new 0 0 293.552 85.48" xml:space="preserve"><path d="M0.02 6.593c0.553-1.569 6.156 0.295 7.579 1.039 0.456-1.495 1.883-7.108 3.324-6.6 1.978 0.697-1.191 8.527-2.771 9.001C6.764 10.45-0.425 7.854 0.02 6.593zM282.02 3.485c0.554 1.569 6.156-0.295 7.579-1.039 0.455 1.495 1.883 7.108 3.323 6.6 1.978-0.697-1.19-8.527-2.771-9.001C288.765-0.372 281.575 2.224 282.02 3.485zM155.085 5.995c-0.553-1.569-6.156 0.295-7.578 1.039 -0.455-1.495-1.883-7.108-3.324-6.6 -1.978 0.697 1.191 8.527 2.771 9.001C148.341 9.851 155.53 7.255 155.085 5.995zM71.573 24.886c0.553 1.569 6.156-0.295 7.579-1.039 0.456 1.495 1.883 7.108 3.324 6.6 1.978-0.697-1.191-8.527-2.771-9.001C78.317 21.03 71.128 23.625 71.573 24.886zM227.085 23.995c-0.553-1.569-6.156 0.295-7.578 1.039 -0.455-1.495-1.883-7.108-3.324-6.6 -1.978 0.697 1.191 8.527 2.771 9.001C220.341 27.851 227.53 25.255 227.085 23.995z"/><path d="M293.532 61.593c-0.553-1.569-6.156 0.295-7.578 1.039 -0.456-1.495-1.883-7.108-3.324-6.6 -1.979 0.697 1.191 8.527 2.771 9.001C286.788 65.45 293.977 62.854 293.532 61.593zM11.532 58.485c-0.554 1.569-6.156-0.295-7.579-1.039 -0.455 1.495-1.883 7.108-3.323 6.6 -1.978-0.697 1.19-8.527 2.771-9.001C4.787 54.628 11.977 57.224 11.532 58.485zM138.467 60.995c0.553-1.569 6.156 0.295 7.578 1.039 0.455-1.495 1.883-7.108 3.324-6.6 1.978 0.697-1.191 8.527-2.771 9.001C145.211 64.851 138.021 62.255 138.467 60.995zM221.979 79.886c-0.554 1.569-6.156-0.295-7.579-1.039 -0.456 1.495-1.883 7.108-3.323 6.6 -1.979-0.697 1.19-8.527 2.77-9.001C215.234 76.03 222.423 78.625 221.979 79.886zM66.467 78.995c0.553-1.569 6.156 0.295 7.578 1.039 0.455-1.495 1.883-7.108 3.324-6.6 1.978 0.697-1.191 8.527-2.771 9.001C73.211 82.851 66.021 80.255 66.467 78.995z"/></svg>
+            </div>-->
+        </div>
+        <div id="square">
+                <div class='edge'><img src='images/top-left.svg'/></div>
+                <div class='edge'><img src='images/top-right.svg'/></div>
+                <div class='edge'><img src='images/bottom-left.svg'/></div>
+                <div class='edge'><img src='images/bottom-right.svg'/></div>
         </div>
         
         <script id="template" type="text/html">
@@ -80,9 +90,11 @@
             
         
         <script>
-            var loader = '<img src="loader.gif" />';
+            var loader = $('#square');
             var listItemTemplate = $('#template').html();
             var workItemTemplate = $('#template-works').html();
+            
+            loader.hide();
             
             function listResults(data) {
                console.log(data);
@@ -107,12 +119,13 @@
                         
             function loadingBar() {
                 $('#loader').append(loader);
+                $(loader).css('display', 'block');
             };
             
             function hideLoadingBar() {
                 $('#loader').empty();
             }
-
+            
             function search(title) {
                 loadingBar();
                 
@@ -176,7 +189,7 @@
                 $cast.children().remove();
                 
                 var $top = $('#search');
-                $top.css('top', '0');
+                $top.css('top', '10px');
                 
                 $('footer').hide();
                 $('#tagline').hide();
@@ -191,7 +204,10 @@
                 
                 var $cast = $('#display-results');
                 $cast.empty();
-                $cast.append(output);
+                //$cast.append(output);
+                window.setTimeout(function() {
+                    $cast.append(output);
+                }, 500);
                 
                 //Replacing missing images with a background color
                 var URL = 'https://image.tmdb.org/t/p/w92';
@@ -209,9 +225,6 @@
          
             $('ul').on('click', 'li', function(e) {
                 e.preventDefault();
-
-                //var result = '<p>This is your result</p>';
-                //$("#display-results").append(result);
 
                 var mediaType = $(this).data('media-type');
                 var id = $(this).data('id');
@@ -298,9 +311,6 @@
             
             $('#display-results').on('click', 'div', function(e) {
                 e.preventDefault();
-
-                var result = '<p>This is your result</p>';
-                $("#display-works").append(result);
                 
                 var id = $(this).data('id');
                 console.log(id);

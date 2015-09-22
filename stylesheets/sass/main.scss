@@ -45,7 +45,8 @@ body {
 
 #search {
     width: $search-box-width;
-    position: relative;
+    position: absolute;
+    z-index: 999;
     display: inline-block;
     margin-left: $search-box-margin;
     margin-right: $search-box-margin;
@@ -90,6 +91,216 @@ p#tagline {
     position: relative;
 }
 
+#background {
+    position: absolute;
+    top: 10px;
+    opacity: 0.2;
+    fill: #000;
+    -webkit-animation: colors 10s linear 0s infinite;
+    -moz-animation: colors 10s linear 0s infinite;
+    -o-animation: colors 10s linear 0s infinite;
+    animation: colors 10s linear 0s infinite; 
+}
+
+@-webkit-keyframes colors {
+    0% { fill: #000 }
+    30% { fill: #666 }
+    60% { fill: #aaa }
+    90% { fill: #666 }
+    100% { fill: #000}
+}
+
+@-moz-keyframes colors {
+    0% { fill: #000 }
+    30% { fill: #666 }
+    60% { fill: #aaa }
+    90% { fill: #666 }
+    100% { fill: #000}
+}
+
+@-o-keyframes colors {
+    0% { fill: #000 }
+    30% { fill: #666 }
+    60% { fill: #aaa }
+    90% { fill: #666 }
+    100% { fill: #000}
+}
+
+@keyframes colors {
+    0% { fill: #000 }
+    30% { fill: #666 }
+    60% { fill: #aaa }
+    90% { fill: #666 }
+    100% { fill: #000}
+}
+
+#loader {
+    width: 30px;
+    position: relative;
+    top: 100px;
+    margin: auto;
+}
+
+#square {
+    position: relative;
+    width: 100%;
+    display: none;
+    
+    .edge {
+        display: inline-block;
+        
+        &:nth-child(1){
+                position: relative;
+                -webkit-animation: top-left 2s linear 0s infinite;
+                -moz-animation: top-left 2s linear 0s infinite;
+                -o-animation: top-left 2s linear 0s infinite;
+                animation: top-left 2s linear 0s infinite;  
+        }
+        
+        &:nth-child(2){
+                position: relative;
+                -webkit-animation: top-right 2s linear 0s infinite;
+                -moz-animation: top-right 2s linear 0s infinite;
+                -o-animation: top-right 2s linear 0s infinite;
+                animation: top-right 2s linear 0s infinite;  
+        }
+        
+        &:nth-child(3){
+                position: relative;
+                -webkit-animation: bottom-left 2s linear 0s infinite;
+                -moz-animation: bottom-left 2s linear 0s infinite;
+                -o-animation: bottom-left 2s linear 0s infinite;
+                animation: bottom-left 2s linear 0s infinite;  
+        }
+        
+        &:nth-child(4){
+                position: relative;
+                -webkit-animation: bottom-right 2s linear 0s infinite;
+                -moz-animation: bottom-right 2s linear 0s infinite;
+                -o-animation: bottom-right 2s linear 0s infinite;
+                animation: bottom-right 2s linear 0s infinite;  
+        }
+        
+        img {
+            width: 150%;
+        }
+    }
+}
+
+@-webkit-keyframes top-left {
+    0% { top:0px; left:0px }
+    90% { top:-10px; left:-10px }
+    99% { top:-10px; left:-10px }
+    100% { top:0px; left:0px }
+}
+
+@-moz-keyframes top-left {
+    0% { top:0px; left:0px }
+    90% {top:-10px; left:-10px}
+    99% {top:-10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+
+@-o-keyframes top-left {
+    0% { top:0px; left:0px }
+    90% {top:-10px; left:-10px}
+    99% {top:-10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+
+@keyframes top-left {
+    0% { top:0px; left:0px }
+    90% {top:-10px; left:-10px}
+    99% {top:-10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+
+ @-webkit-keyframes top-right {
+    0% { top:0px; left:0px }
+    /*20% { top:0px; left:0px }*/
+    90% {top:-10px; left:10px}
+    99% {top:-10px; left:10px}
+    100% {top:0px; left:0px }
+}
+@-moz-keyframes top-right {
+    0% { top:0px; left:0px }
+    /*20% { top:0px; left:0px }*/
+    90% {top:-10px; left:10px}
+    99% {top:-10px; left:10px}
+    100% { top:-10px; left:10px }  }
+@-o-keyframes top-right {
+    0% { top:0px; left:0px }
+    /*20% { top:0px; left:0px }*/
+    90% {top:-10px; left:10px}
+    99% {top:-10px; left:10px}
+    100% {top:0px; left:0px }
+}
+@keyframes top-right {
+    0% { top:0px; left:0px }
+    /*20% { top:0px; left:0px }*/
+    90% {top:-10px; left:10px}
+    99% {top:-10px; left:10px}
+    100% {top:0px; left:0px }
+}
+
+ @-webkit-keyframes bottom-left {
+    0% { top:0px; left:0px }
+    /*60% { top:0px; left:0px }*/
+    90% {top:10px; left:-10px}
+    99% {top:10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+@-moz-keyframes bottom-left {
+    0% { top:0px; left:0px }
+    /*60% { top:0px; left:0px }*/
+    90% {top:10px; left:-10px}
+    99% {top:10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+@-o-keyframes bottom-left {
+    0% { top:0px; left:0px }
+    /*60% { top:0px; left:0px }*/
+    90% {top:10px; left:-10px}
+    99% {top:10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+@keyframes bottom-left {
+    0% { top:0px; left:0px }
+    /*60% { top:0px; left:0px }*/
+    90% {top:10px; left:-10px}
+    99% {top:10px; left:-10px}
+    100% {top:0px; left:0px }
+}
+
+ @-webkit-keyframes bottom-right {
+    0% { top:0px; left:0px }
+    /*40% { top:0px; left:0px }*/
+    90% {top:10px; left:10px}
+    99% {top:10px; left:10px}
+    100% { top:0px; left:0px }
+}
+@-moz-keyframes bottom-right {
+    0% { top:0px; left:0px }
+    /*40% { top:0px; left:0px }*/
+    90% {top:10px; left:10px}
+    99% {top:10px; left:10px}
+    100% { top:0px; left:0px }
+}
+@-o-keyframes bottom-right {
+    0% { top:0px; left:0px }
+    /*40% { top:0px; left:0px }*/
+    90% {top:10px; left:10px}
+    99% {top:10px; left:10px}
+    100% { top:0px; left:0px }
+}
+@keyframes bottom-right {
+    0% { top:0px; left:0px }
+    /*40% { top:0px; left:0px }*/
+    90% {top:10px; left:10px}
+    99% {top:10px; left:10px}
+    100% { top:0px; left:0px }
+}
+
 #list {
     background: {
         color: white;
@@ -107,6 +318,7 @@ p#tagline {
     position: relative;
     top: -2px;
     border: 1px solid $green;
+    border-top: none;
 
     li {
         padding: 10px 0;
@@ -133,17 +345,17 @@ p#tagline {
     }
 
 #display-results, #display-works {
-    width: $search-box-width;
     position: relative;
+    top: 40px;
+    display: inline-block;
+    z-index: 900;
+    
+    width: $search-box-width;
     margin-left: $search-box-margin;
     margin-right: $search-box-margin;
    
     @include border-radius(4px);
-    display: inline-block;
-    position: relative;
     background-color: #fff;
-    display: inline-block;
-    
     
     .main:first-child {
         border-top: 1px solid #48de9f;
@@ -226,6 +438,7 @@ p#tagline {
                 vertical-align: middle;
                 position: relative;
                 top: 40px;
+                width: 100%;
             }
         }
     }
@@ -234,7 +447,7 @@ p#tagline {
 footer {
     display: inline-block;
     position: relative;
-    top: 230px;
+    top: 290px;
     width: 100%;
 }
 
