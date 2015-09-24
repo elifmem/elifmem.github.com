@@ -26,6 +26,7 @@
     </head>
     <body>
         <div id="container">
+            <!--<p id='tagline'>An app for movie & cast lookup</p>-->
            <div id="search">
                <form id='search-form'>
                    <input type="search" class="form-control" id="search-title" placeholder="Search"/>
@@ -107,6 +108,9 @@
                 var $list = $('#list');
                 $list.empty();
                 $list.append(output);
+                
+                
+                $('#tagline').hide();
             };
             
             function normalizeData(data) {
@@ -189,7 +193,7 @@
                 $cast.children().remove();
                 
                 var $top = $('#search');
-                $top.css('top', '10px');
+                $top.css('top', '20px');
                 
                 $('footer').hide();
                 $('#tagline').hide();
@@ -207,20 +211,22 @@
                 //$cast.append(output);
                 window.setTimeout(function() {
                     $cast.append(output);
+                    
+                    //Replacing missing images with a background color
+                    var URL = 'https://image.tmdb.org/t/p/w92';
+                    var $images = $cast.find('img');
+                    console.log($images);
+
+                    $images.each(function() {
+                        var $image = $(this);
+
+                        var src = $image.attr('src');
+                        if ( src === URL ) {
+                            $image.closest('div').addClass('null-act');
+                            $image.remove();
+                        }
+                    });
                 }, 500);
-                
-                //Replacing missing images with a background color
-                var URL = 'https://image.tmdb.org/t/p/w92';
-                var image = $cast.find('img');
-                console.log(image);
-                
-                $(image).each(function() {
-                    var src = $(this).attr('src');
-                    if ( src === URL ) {
-                        $(this).parent().addClass('null-act');
-                        $(this).remove();
-                    }
-                });
             }
          
             $('ul').on('click', 'li', function(e) {

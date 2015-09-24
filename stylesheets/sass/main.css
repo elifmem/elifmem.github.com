@@ -16,7 +16,7 @@ body {
   display: inline-block;
   margin-left: 1.5625%;
   margin-right: 1.5625%;
-  top: 40px;
+  top: 60px;
   transition-property: top;
   transition-duration: 1s;
   transition-timing-function: ease-out;
@@ -55,7 +55,7 @@ input[placeholder="Search"] {
 
 p#tagline {
   text-align: center;
-  top: 20px;
+  top: 40px;
   position: relative;
 }
 
@@ -525,7 +525,7 @@ p#tagline {
 
 #display-results, #display-works {
   position: relative;
-  top: 40px;
+  top: 60px;
   display: inline-block;
   z-index: 900;
   width: 96.875%;

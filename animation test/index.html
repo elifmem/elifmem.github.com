@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Prototype</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        
+        <!-- Bootstrap Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="stylesheets/reset.css">
+        <link rel="stylesheet" href="stylesheets/sass/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="mustache.js-master/mustache.js" ></script>
+        <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        
+        <style>
+            body {background-color: #1f3032;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+            #container {width: 100%;}
+            
+            svg {fill: #fe757c;}
+            
+            #dot {
+                position: relative;
+                -webkit-animation: move_dot 4s linear 0s infinite alternate;
+                -moz-animation: move_dot 4s linear 0s infinite alternate;
+                -o-animation: move_dot 4s linear 0s infinite alternate;
+                animation: move_dot 4s linear 0s infinite alternate;
+            }
+
+            @-webkit-keyframes move_dot { from { top:10px; } to { top:100px; }  }
+            @-moz-keyframes move_dot { from { top:10px; } to { top:100px; }  }
+            @-o-keyframes move_dot { from { top:10px; } to { top:100px; }  }
+            @keyframes move_dot { from { top:10px; } to { top:100px; }  }
+            
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="animation">
+                <svg version="1.1" id="dot" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="7.739px" height="8px" viewBox="63.63 82 7.739 8" enable-background="new 63.63 82 7.739 8" xml:space="preserve">
+                    <path d="M67.477,82c-5.16,0-5.111,8,0.047,8C72.684,90,72.635,82,67.477,82z"/>
+                </svg>
+            </div>
+            
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="185.268px" height="100px" viewBox="0 0 185.268 100" enable-background="new 0 0 185.268 100" xml:space="preserve">
+                <polyline stroke="#fe757c" fill="none" stroke="#231F20" stroke-miterlimit="10" points="0,0.72 37.072,0.72 72.33,0.72 110.268,0.72 185.268,0.72"/>
+            </svg>
+        </div>
+        
+        <script>
+            
+           /* $('.animation').on('click', function(e) {
+                e.preventDefault();
+                
+                var textPath = $('#text').attr('d');
+                var linePath = $('#line').attr('d');
+                
+                $('#line').attr('d', textPath);
+            });*/
+
+            /*
+            $('#Layer_1').on('click', function(e) {
+              e.preventDefault();
+            
+              var pointsStr = $('polyline').attr('points');
+              var points = pointsStr.split(' ');
+            
+              console.log(pointsStr);
+              console.log(points);
+              console.log(points[0]);
+            
+              points[2] = "72.33,10.518";
+              pointsStr = points.join(' ');
+        
+              $('polyline').attr('points', pointsStr);
+            });
+            */
+            
+            // 0,0.72 37.072,0.72 72.33,0.72 110.268,0.72 185.268,0.72
+            var point1 = { x: 50, y: 0 };
+            var point2 = { x: 50, y: 100 };
+            
+            var $svg = $('#Layer_1');
+            var $polyline = $svg.children('polyline');
+            
+            function updatePolyline() {
+              $polyline.attr('points', point1.x + "," + point1.y + " " + point2.x + "," + point2.y);
+            }
+            
+            updatePolyline();
+            
+            
+            $('#Layer_1').on('click', function(e) {
+              e.preventDefault();
+            
+              moveTo(point1, { x: 0, y: 50}, 2);
+              moveTo(point2, { x: 100, y: 50}, 2);
+            });
+            
+            function moveTo(point, destination, durationSecs) {
+              var framesPerSec = 30;
+              var numFrames = framesPerSec * durationSecs;
+                
+              console.log(numFrames);
+                
+              var deltaX = destination.x - point.x;
+              var deltaY = destination.y - point.y;
+                
+              var deltaXPerFrame = deltaX / numFrames;
+              var deltaYPerFrame = deltaY / numFrames;
+              
+              var frame = 0;
+              var stepFn = function() {
+                point.x += deltaXPerFrame;
+                point.y += deltaYPerFrame;
+                  
+                updatePolyline();
+                
+                frame += 1;
+                if ( frame != numFrames ) {
+                  window.setTimeout(stepFn, 1000 / framesPerSec);
+                }
+              };
+              window.setTimeout(stepFn, 1000 / framesPerSec);
+            }
+        </script>
+    </body>
+</html>
