@@ -40,17 +40,26 @@ body {
 
 #container {
     width: 100%;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+}
+
+#top-box {
+    background-color: $background;
+    position: fixed;
+    height: 65px;
+    display: inline-block;
+    width: 100%;
+    z-index: 999;
 }
 
 #search {
     width: $search-box-width;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     display: inline-block;
     margin-left: $search-box-margin;
     margin-right: $search-box-margin;
-    top: 60px;
+    top: 80px;
     transition-property: top;
     transition-duration: 1s;
     transition-timing-function: ease-out;
@@ -89,6 +98,16 @@ p#tagline {
     text-align: center;
     top: 40px;
     position: relative;
+    z-index: 11111;
+    /*font-family: "rooney-sans", sans-serif;
+    font-weight: 700;*/
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: 1;
+    
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
 }
 
 #background {
@@ -142,7 +161,7 @@ p#tagline {
 }
 
 #square {
-    position: relative;
+    position: absolute;
     width: 100%;
     display: none;
     
@@ -181,9 +200,9 @@ p#tagline {
                 animation: bottom-right 2s linear 0s infinite;  
         }
         
-        img {
+        /*img {
             width: 150%;
-        }
+        }*/
     }
 }
 
@@ -316,9 +335,9 @@ p#tagline {
     margin: 0;
     @include border-radius(0 0 4px 4px);
     position: relative;
-    top: -2px;
-    border: 1px solid $green;
-    border-top: none;
+    top: 0;
+    border-left: 1px solid $green;
+    border-right: 1px solid $green;
 
     li {
         padding: 10px 0;
@@ -346,7 +365,7 @@ p#tagline {
 
 #display-results, #display-works {
     position: relative;
-    top: 60px;
+    top: 80px;
     display: inline-block;
     z-index: 900;
     
@@ -446,8 +465,8 @@ p#tagline {
 
 footer {
     display: inline-block;
-    position: relative;
-    top: 290px;
+    position: absolute;
+    top: 330px;
     width: 100%;
 }
 

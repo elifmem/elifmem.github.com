@@ -23,21 +23,23 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         
+        
     </head>
     <body>
         <div id="container">
             <!--<p id='tagline'>An app for movie & cast lookup</p>-->
-           <div id="search">
-               <form id='search-form'>
-                   <input type="search" class="form-control" id="search-title" placeholder="Search"/>
-                   <span class="glyphicon glyphicon-search form-control-feedback"></span>
-               </form>
-               
-               <ul id="list">
-               </ul>
-               
-               <p id='tagline'>An app for movie & cast lookup.</p>
-            </div>
+           <div id='top-box'>
+            <div id="search">
+                <form id='search-form'>
+                    <input type="search" class="form-control" id="search-title" placeholder="Search"/>
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </form>
+
+                <ul id="list">
+                </ul>
+               </div>
+            </div> 
+            <p id='tagline'>An app for movie & cast lookup</p>
                 
             
             <div id="display-results"></div>
@@ -108,9 +110,6 @@
                 var $list = $('#list');
                 $list.empty();
                 $list.append(output);
-                
-                
-                $('#tagline').hide();
             };
             
             function normalizeData(data) {
@@ -192,11 +191,12 @@
                 $works.children().remove();
                 $cast.children().remove();
                 
+                $('#tagline').css('opacity', '0');
                 var $top = $('#search');
                 $top.css('top', '20px');
                 
+                
                 $('footer').hide();
-                $('#tagline').hide();
             });
             
             function displayActors(results) {
@@ -325,8 +325,19 @@
 
                 var $list = $('#display-results');
                 $list.empty();
-            });  
+            }); 
         
         </script>
+        
+        <script>
+  (function(d) {
+    var config = {
+      kitId: 'usz7aze',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
     </body>
 </html>
