@@ -64,7 +64,10 @@
         
         <script id="template" type="text/html">
             {{#results}} 
-                <li data-media-type="{{media_type}}" data-id="{{id}}"><p>{{title}}</p></li>
+                <li data-media-type="{{media_type}}" data-id="{{id}}">
+                    <p>{{title}}</p>
+                    <span class="release-date">{{release_date}} {{first_air_date}}</span>
+                </li>
             {{/results}}
             
             {{#cast}}
@@ -86,6 +89,8 @@
                         <img src='https://image.tmdb.org/t/p/w92{{poster_path}}' />
                         <p class="movie-info">{{title}} {{name}}</p>
                     </div>
+                    
+                        <span class="release-date">{{release_date}} {{first_air_date}}</span>
                 </div>    
             {{/cast}}
         </script>
@@ -93,6 +98,7 @@
             
         
         <script>
+
             var loader = $('#square');
             var listItemTemplate = $('#template').html();
             var workItemTemplate = $('#template-works').html();
@@ -110,6 +116,18 @@
                 var $list = $('#list');
                 $list.empty();
                 $list.append(output);
+                
+                var $releaseDates = $('span.release-date');
+                $releaseDates.each(function() {
+                    var $releaseDate = $(this);
+                    var $releaseYear = $releaseDate.text().substring(0,4);
+                    var $yearTrimmed = $.trim($releaseYear);
+                    $releaseDate.text($yearTrimmed);
+                    
+                    if ( $yearTrimmed.length <= 3 )  {
+                            $releaseDate.remove();
+                    }
+                });
             };
             
             function normalizeData(data) {
@@ -182,8 +200,9 @@
             
             $('#list').on('click', 'li', function(e) {
                 e.preventDefault();
-                var searchText = $(this).text();
-                $('#search-title').val( searchText );
+                var searchText = $(this).find('p');
+                var searchValue = searchText.text();
+                $('#search-title').val( searchValue );
                 
                 var $works = $('#display-works');
                 var $cast = $('#display-results');
@@ -194,8 +213,7 @@
                 $('#tagline').css('opacity', '0');
                 var $top = $('#search');
                 $top.css('top', '20px');
-                
-                
+                        
                 $('footer').hide();
             });
             
@@ -293,12 +311,17 @@
                 $works.append(movieOutput);
                 $works.append(tvOutput);
                 
-                
-                var title = $works.children('p').text();
-                var trimmedTitle = $.trim(title);
-                $works.children('p').text(trimmedTitle);
-                
-                
+                 var $releaseDates = $('span.release-date');
+                $releaseDates.each(function() {
+                    var $releaseDate = $(this);
+                    var $releaseYear = $releaseDate.text().substring(0,4);
+                    var $yearTrimmed = $.trim($releaseYear);
+                    $releaseDate.text($yearTrimmed);
+                    
+                    if ( $yearTrimmed.length <= 3 )  {
+                            $releaseDate.remove();
+                    }
+                });
                 //Replacing missing images with a background color
                 var URL = 'https://image.tmdb.org/t/p/w92';
                 var $images = $works.find('img');
@@ -311,6 +334,10 @@
                     if ( src === URL ) {
                         $image.closest('div').addClass('null-mov');
                         $image.remove();
+                        
+                        var title = $works.children('p.movie-info').text();
+                        var trimmedTitle = $.trim(title);
+                        $works.children('p.movie-info').text(trimmedTitle);
                     }
                 });
             }

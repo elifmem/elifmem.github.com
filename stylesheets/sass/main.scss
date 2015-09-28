@@ -350,7 +350,7 @@ p#tagline {
     }
     
     p {
-        display: inline-block;
+        display: inline;
         width: 100%;
         padding-left: 10px;
     }
@@ -360,8 +360,22 @@ p#tagline {
         float: right;
         position: relative;
         left: -10px;
+    }
+    
+    span {
+        display: inline;
+        
+        &::before {
+            content: '(';
+            padding-left: 10px;
+        }
+        
+         &::after {
+            content: ')';
         }
     }
+    
+}
 
 #display-results, #display-works {
     position: relative;
@@ -437,6 +451,7 @@ p#tagline {
         margin: inherit;
         margin-right: 2.3796%;
         margin-top: 2.3796%;
+        height: 138px;
         
         div {
             width: 92px;
@@ -444,7 +459,7 @@ p#tagline {
             background-color: #fff;
             display: block;
             
-            p {
+            p.movie-info {
                 display: none;
             }
         }
@@ -459,6 +474,19 @@ p#tagline {
                 top: 40px;
                 width: 100%;
             }
+        }
+
+        span.release-date {
+            font-size: 12px;
+            text-align: center;
+            color: #000;
+            background: #fff;
+            width: 40%;
+            position: relative;
+            top: -30px;
+            height: 20px;
+            left: 10px;
+            padding: 3px;
         }
     }
 }

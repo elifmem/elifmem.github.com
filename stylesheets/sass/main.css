@@ -530,7 +530,7 @@ p#tagline {
   border-bottom: none;
 }
 #list p {
-  display: inline-block;
+  display: inline;
   width: 100%;
   padding-left: 10px;
 }
@@ -539,6 +539,16 @@ p#tagline {
   float: right;
   position: relative;
   left: -10px;
+}
+#list span {
+  display: inline;
+}
+#list span::before {
+  content: '(';
+  padding-left: 10px;
+}
+#list span::after {
+  content: ')';
 }
 
 #display-results, #display-works {
@@ -608,6 +618,7 @@ p#tagline {
   margin: inherit;
   margin-right: 2.3796%;
   margin-top: 2.3796%;
+  height: 138px;
 }
 #display-results .works div, #display-works .works div {
   width: 92px;
@@ -615,7 +626,7 @@ p#tagline {
   background-color: #fff;
   display: block;
 }
-#display-results .works div p, #display-works .works div p {
+#display-results .works div p.movie-info, #display-works .works div p.movie-info {
   display: none;
 }
 #display-results .works div.null-mov p, #display-works .works div.null-mov p {
@@ -626,6 +637,18 @@ p#tagline {
   position: relative;
   top: 40px;
   width: 100%;
+}
+#display-results .works span.release-date, #display-works .works span.release-date {
+  font-size: 12px;
+  text-align: center;
+  color: #000;
+  background: #fff;
+  width: 40%;
+  position: relative;
+  top: -30px;
+  height: 20px;
+  left: 10px;
+  padding: 3px;
 }
 
 footer {
